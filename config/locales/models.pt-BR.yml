@@ -5,8 +5,8 @@
         one: Administrador
         other: Administradores
       user:
-        one: Perfil
-        other: Perfis  
+        one: Usuário
+        other: Usuários  
     attributes:
       admin:
         id: Código
