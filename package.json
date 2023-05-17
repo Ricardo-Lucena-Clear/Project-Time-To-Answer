@@ -1,0 +1,8 @@
+{
+  "name": "time_to_answer",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:Ricardo-Lucena-Clear/Project-Time-To-Answer.git",
+  "author": "Ricardo-Lucena-Clear <ricardo.lucena.clear@gmail.com>",
+  "license": "MIT"
+}
