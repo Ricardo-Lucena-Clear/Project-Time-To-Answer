@@ -11,7 +11,6 @@ Rails.application.routes.draw do
     resources :admins   # Administradores
     resources :subjects # Assuntos/Areas
   end
-  
   devise_for :admins
   devise_for :users
  
