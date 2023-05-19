@@ -30,16 +30,29 @@ namespace :dev do
    end
    end
 
-  desc "Adiciona questões e respostas"
-  task add_answers_and_questions: :environment do Subject.all.each do |subject| 
-  rand(5..10).times do |i|
-  Question.create!(
-      description: "#{Faker::Lorem.paragraph} #{Faker::Lorem.question}",
-      subject: subject
-   )
-   end
-   end
-   end
+   desc "Adiciona perguntas e respostas"
+   task add_answers_and_questions: :environment do
+   Subject.all.each do |subject|
+   rand(5..10).times do |i|
+   params = {
+   question: {
+   description: "#{Faker::Lorem.paragraph} #{Faker::Lorem.question}",
+   subject: subject,
+   answers_attributes: []
+   }
+   } 
+   rand(2..5).times do |i|
+    params[:question][:answers_attributes].push(
+    {description: Faker::Lorem.sentence, correct: false}
+    )
+    end
+    params[:question][:answers_attributes][
+    rand(params[:question][:answers_attributes].size)
+    ] = {description: Faker::Lorem.sentence, correct: true}
+    Question.create!(params[:question])
+    end
+    end
+    end
 
 
   desc "Adiciona o administrador padrão"
