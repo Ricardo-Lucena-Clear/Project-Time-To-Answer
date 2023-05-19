@@ -27,10 +27,11 @@
                                 
                                 <div class="form-group">
                                 <%= form.label :description %>
-                               <%= form.text_field :description, class:"form-control", placeholder:"Descrição de Assunto/Area" %>
+                                <%= form.text_field :description, class:"form-control", placeholder: t('placeholder.subject_description')  %>
                         </div>
-                        <button type="submit" class="btn btn-default">Salvar
-                        </button>
+                        <button type="submit" class="btn btn-default">
+                              <%= t('buttons.save') %>
+                            </button>
                         <% end %>
                     </div>
                 </div>
