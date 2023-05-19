@@ -12,7 +12,8 @@ namespace :dev do
       show_spinner("Cadastrando o administrador padrão...") { %x(rails dev:add_default_admin) }
       show_spinner("Adicionando administradores extras...") { %x(rails dev:add_extra_admins) }
       show_spinner("Cadastrando o usuário padrão...") { %x(rails dev:add_default_user) }
-      show_spinner("Cadastrando assuntos padrões...") { %x(rails dev:add_subjects) }   
+      show_spinner("Cadastrando assuntos padrões...") { %x(rails dev:add_subjects) }  
+      show_spinner("Cadastrando algumas questões e respostas...") { %x(rails dev:add_answers_and_questions) } 
     else
       puts "Você não está em ambiente de desenvolvimento!"
     end
@@ -26,6 +27,16 @@ namespace :dev do
       password: DEFAULT_PASSWORD,
       password_confirmation: DEFAULT_PASSWORD
    )
+   end
+   end
+
+  desc "Adiciona questões e respostas"
+  task add_answers_and_questions: :environment do Subject.all.each do |subject| rand(5..10).times do |i|
+ Question.create!(
+      description: "#{Faker::Lorem.paragraph} #{Faker::Lorem.question}",
+      subject: subject
+   )
+   end
    end
    end
 
